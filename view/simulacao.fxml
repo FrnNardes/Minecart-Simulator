@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.441" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SimulacaoController">
+   <children>
+      <ImageView blendMode="SRC_ATOP" fitHeight="768.0" fitWidth="1379.0" layoutX="-171.0" preserveRatio="true">
+         <image>
+            <Image url="@../assets/backgroundDay.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imagemVillagerDireita" fitHeight="70.0" fitWidth="70.0" layoutX="486.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/VillagerTopDownOnCart.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="585.0" layoutY="652.0" mnemonicParsing="false" onAction="#subirVillagerDireita" prefHeight="43.0" prefWidth="54.0" styleClass="arrow" stylesheets="@style/style.css" text="⬆" />
+      <Button layoutX="583.0" layoutY="14.0" mnemonicParsing="false" onAction="#descerVillagerDireita" prefHeight="15.0" prefWidth="58.0" styleClass="arrow" stylesheets="@style/style.css" text="⬇" />
+      <ImageView fx:id="imagemVillagerEsquerda" fitHeight="70.0" fitWidth="70.0" layoutX="513.0" layoutY="652.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+         <image>
+            <Image url="@../assets/VillagerTopDownOnCart.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="383.0" layoutY="652.0" mnemonicParsing="false" onAction="#subirVillagerEsquerda" prefHeight="44.0" prefWidth="54.0" styleClass="arrow" stylesheets="@style/style.css" text="⬆" />
+      <Button layoutX="381.0" layoutY="14.0" mnemonicParsing="false" onAction="#descerVillagerEsquerda" prefHeight="19.0" prefWidth="58.0" styleClass="arrow" stylesheets="@style/style.css" text="⬇" />
+      <ImageView fitHeight="34.0" fitWidth="43.0" layoutX="976.0" layoutY="11.0" onMouseClicked="#fecharPrograma" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/leaveButton.png" />
+         </image>
+      </ImageView>
+      <Slider fx:id="sliderDireita" layoutX="508.0" layoutY="377.0" max="10.0" prefHeight="14.0" prefWidth="154.0" rotate="270.0" styleClass="custom-slider" stylesheets="@style/style.css" />
+      <Slider fx:id="sliderEsquerda" layoutX="358.0" layoutY="377.0" max="10.0" prefHeight="14.0" prefWidth="154.0" rotate="270.0" styleClass="custom-slider" stylesheets="@style/style.css" />
+      <ImageView fitHeight="43.0" fitWidth="150.0" layoutX="814.0" layoutY="7.0" onMouseClicked="#resetarPosicao" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/restartButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="28.0" layoutX="598.0" layoutY="660.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+         <image>
+            <Image url="@../assets/arrowUp.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="28.0" layoutX="396.0" layoutY="660.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+         <image>
+            <Image url="@../assets/arrowUp.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="28.0" layoutX="598.0" layoutY="22.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+         <image>
+            <Image url="@../assets/arrowDown.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="28.0" layoutX="396.0" layoutY="22.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+         <image>
+            <Image url="@../assets/arrowDown.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="573.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/plus.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="423.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/plus.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="573.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/minus.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="423.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/minus.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,78 @@
+.button {
+  -fx-background-color: linear-gradient(#8B8B8B, #5A5A5A);
+  -fx-border-color: #000000;
+  -fx-border-width: 2px;
+  -fx-border-radius: 0;
+  -fx-background-radius: 0;
+  -fx-font-family: "Press Start 2P", sans-serif;
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-padding: 10px 20px;
+  -fx-effect: dropshadow(three-pass-box, #3A3A3A, 5, 0, 3, 3);
+}
+
+.button:hover {
+  -fx-background-color: linear-gradient(#A0A0A0, #787878);
+}
+
+.button:pressed {
+  -fx-background-color: linear-gradient(#5A5A5A, #3A3A3A);
+  -fx-translate-y: 2px;
+}
+
+.arrow {
+  -fx-background-color: linear-gradient(#8B8B8B, #5A5A5A);
+  -fx-border-color: #000000;
+  -fx-border-width: 2px;
+  -fx-border-radius: 0;
+  -fx-background-radius: 0;
+  -fx-effect: dropshadow(three-pass-box, #3A3A3A, 5, 0, 3, 3);
+}
+
+.arrow:hover {
+  -fx-background-color: linear-gradient(#A0A0A0, #787878);
+}
+
+.arrow:pressed {
+  -fx-background-color: linear-gradient(#5A5A5A, #3A3A3A);
+  -fx-translate-y: 2px;
+}
+
+
+/* Estiliza os sliders */
+.custom-slider {
+}
+
+/* Linha de fundo do slider */
+.custom-slider .track {
+  -fx-background-color: linear-gradient(to bottom, #444, black);
+  -fx-border-color: white;
+  -fx-border-radius: 6px;
+  -fx-background-radius: 6px;
+  -fx-pref-width: 8px;
+}
+
+/* Botão deslizante (thumb) */
+.custom-slider .thumb {
+  -fx-background-color: rgb(0, 0, 100);
+  -fx-background-radius: 50%;
+  -fx-pref-width: 22px;
+  -fx-pref-height: 22px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 2);
+  -fx-transition: all 0.3s ease-in-out;
+}
+
+/* Efeito ao passar o mouse no thumb */
+.custom-slider .thumb:hover {
+  -fx-background-color: #2980b9;
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;
+}
+
+.image-button {
+  -fx-transition: all 0.3s ease-in-out; /* Suaviza a transição */
+}
+
+.image-button:hover {
+  -fx-opacity: 0.6; /* Deixa a imagem mais clara ao passar o mouse */
+}
