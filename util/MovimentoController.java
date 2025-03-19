@@ -54,40 +54,40 @@ public class MovimentoController {
   public void movimentarVillagerDireitaBaixo(Villager villager){
     ImageView image = villager.getVillagerImage();
     
-    if(image.getLayoutY() > 610){ // Verifica a posicao do villager ate o limite da curva
+    if(image.getLayoutY() > 560){ // Verifica a posicao do villager ate o limite da curva
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade()); // Movimenta o villager no eixo Y
-    } else if(image.getLayoutY() <= 610 && image.getLayoutY() > 580){ // Verifica a posicao do villager do inicio ate o fim da curva
+    } else if(image.getLayoutY() <= 560 && image.getLayoutY() > 540){ // Verifica a posicao do villager do inicio ate o fim da curva
       image.setLayoutX(image.getLayoutX() - villager.getVelocidade()); // Modifica o eixo X, realizando a curva
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade()); // Modifica o eixo Y, realizando a curva
       image.setRotate(-60); // Seta a rotacao para ficar condizente com o trilho
-    } else if(image.getLayoutY() <= 580 && image.getLayoutY() > 450){
+    } else if(image.getLayoutY() <= 540 && image.getLayoutY() > 410){
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
       image.setRotate(0);
       image.setLayoutX(485);
-    } else if(image.getLayoutY() <= 450 && image.getLayoutY() > 420){
+    } else if(image.getLayoutY() <= 410 && image.getLayoutY() > 390){
       image.setLayoutX(image.getLayoutX() + villager.getVelocidade());
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
       image.setRotate(60);
-    } else if(image.getLayoutY() <= 420 && image.getLayoutY() > 290){
+    } else if(image.getLayoutY() <= 390 && image.getLayoutY() > 260){
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
       image.setRotate(0);
-      image.setLayoutX(513);
-    } else if(image.getLayoutY() <= 290 && image.getLayoutY() > 260){
+      image.setLayoutX(508);
+    } else if(image.getLayoutY() <= 260 && image.getLayoutY() > 240){
       image.setLayoutX(image.getLayoutX() - villager.getVelocidade());
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
       image.setRotate(-60);
-    } else if(image.getLayoutY() <= 260 && image.getLayoutY() > 130){
+    } else if(image.getLayoutY() <= 240 && image.getLayoutY() > 110){
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
       image.setRotate(0);
       image.setLayoutX(485);
-    } else if(image.getLayoutY() <= 130 && image.getLayoutY() > 100){
+    } else if(image.getLayoutY() <= 110 && image.getLayoutY() > 90){
       image.setLayoutX(image.getLayoutX() + villager.getVelocidade());
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
       image.setRotate(60);
-    } else if(image.getLayoutY() <= 100){
+    } else if(image.getLayoutY() <= 90){
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
       image.setRotate(0);
-      image.setLayoutX(513);
+      image.setLayoutX(508);
     }// Fim das verificacoes de movimentacao
     
     // If que verifica o limiar das bordas da aplicacao, resetando a posicao incial do villager
@@ -105,43 +105,43 @@ public class MovimentoController {
   public void movimentarVillagerDireitaCima(Villager villager){
     ImageView image = villager.getVillagerImage();
     
-    if(image.getLayoutY() < 100){
+    if(image.getLayoutY() < 90){
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
-    } else if(image.getLayoutY() >= 100 && image.getLayoutY() < 130){
+    } else if(image.getLayoutY() >= 90 && image.getLayoutY() < 110){
       image.setLayoutX(image.getLayoutX() - villager.getVelocidade());
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(240);
-    } else if(image.getLayoutY() >= 130 && image.getLayoutY() < 260){
+    } else if(image.getLayoutY() >= 110 && image.getLayoutY() < 240){
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(180);
       image.setLayoutX(485);
-    } else if(image.getLayoutY() >= 260 && image.getLayoutY() < 290){
+    } else if(image.getLayoutY() >= 240 && image.getLayoutY() < 260){
       image.setLayoutX(image.getLayoutX() + villager.getVelocidade());
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(120);
-    } else if(image.getLayoutY() >= 290 && image.getLayoutY() < 420){
+    } else if(image.getLayoutY() >= 260 && image.getLayoutY() < 390){
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(180);
-      image.setLayoutX(513);
-    } else if(image.getLayoutY() >= 420 && image.getLayoutY() < 450){
+      image.setLayoutX(508);
+    } else if(image.getLayoutY() >= 390 && image.getLayoutY() < 410){
       image.setLayoutX(image.getLayoutX() - villager.getVelocidade());
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(240);
-    } else if(image.getLayoutY() >= 450 && image.getLayoutY() < 580){
+    } else if(image.getLayoutY() >= 410 && image.getLayoutY() < 540){
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(180);
       image.setLayoutX(485);
-    } else if(image.getLayoutY() >= 580 && image.getLayoutY() < 610){
+    } else if(image.getLayoutY() >= 540 && image.getLayoutY() < 560){
       image.setLayoutX(image.getLayoutX() + villager.getVelocidade());
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(120);
-    } else if(image.getLayoutY() >= 610){
+    } else if(image.getLayoutY() >= 560){
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(180);
-      image.setLayoutX(513);
+      image.setLayoutX(508);
     }// Fim das verificacoes de movimentacao
 
-    if(image.getLayoutY() > 760){
+    if(image.getLayoutY() > 700){
       villager.setPosicaoIncial(villager.getPosicao());
     }
   }// Fim do metodo movimentarVillagerDiretaCima
@@ -155,42 +155,41 @@ public class MovimentoController {
   public void movimentarVillagerEsquerdaBaixo(Villager villager){
     ImageView image = villager.getVillagerImage();
     
-    if(image.getLayoutY() > 610){
-      image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
-    } else if(image.getLayoutY() <= 610 && image.getLayoutY() > 580){
-      image.setLayoutX(image.getLayoutX() + villager.getVelocidade());
-      image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
-      image.setRotate(60);
-    } else if(image.getLayoutY() <= 580 && image.getLayoutY() > 450){
-      image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
-      image.setRotate(0);
-      image.setLayoutX(485);
-    } else if(image.getLayoutY() <= 450 && image.getLayoutY() > 420){
-      image.setLayoutX(image.getLayoutX() - villager.getVelocidade());
-      image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
-      image.setRotate(-60);
-    } else if(image.getLayoutY() <= 420 && image.getLayoutY() > 290){
-      image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
-      image.setRotate(0);
-      image.setLayoutX(458);
-    } else if(image.getLayoutY() <= 290 && image.getLayoutY() > 260){
-      image.setLayoutX(image.getLayoutX() + villager.getVelocidade());
-      image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
-      image.setRotate(60);
-    } else if(image.getLayoutY() <= 260 && image.getLayoutY() > 130){
+    if(image.getLayoutY() > 560){ // Verifica a posicao do villager ate o limite da curva
+      image.setLayoutY(image.getLayoutY() - villager.getVelocidade()); // Movimenta o villager no eixo Y
+    } else if(image.getLayoutY() <= 560 && image.getLayoutY() > 540){ // Verifica a posicao do villager do inicio ate o fim da curva
+      image.setLayoutX(image.getLayoutX() + villager.getVelocidade()); // Modifica o eixo X, realizando a curva
+      image.setLayoutY(image.getLayoutY() - villager.getVelocidade()); // Modifica o eixo Y, realizando a curva
+      image.setRotate(60); // Seta a rotacao para ficar condizente com o trilho
+    } else if(image.getLayoutY() <= 540 && image.getLayoutY() > 410){
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
       image.setRotate(0);
       image.setLayoutX(485);
-    } else if(image.getLayoutY() <= 130 && image.getLayoutY() > 100){
+    } else if(image.getLayoutY() <= 410 && image.getLayoutY() > 390){
       image.setLayoutX(image.getLayoutX() - villager.getVelocidade());
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
       image.setRotate(-60);
-    } else if(image.getLayoutY() <= 100){
+    } else if(image.getLayoutY() <= 390 && image.getLayoutY() > 260){
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
       image.setRotate(0);
-      image.setLayoutX(458);
+      image.setLayoutX(460);
+    } else if(image.getLayoutY() <= 260 && image.getLayoutY() > 240){
+      image.setLayoutX(image.getLayoutX() + villager.getVelocidade());
+      image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
+      image.setRotate(60);
+    } else if(image.getLayoutY() <= 240 && image.getLayoutY() > 110){
+      image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
+      image.setRotate(0);
+      image.setLayoutX(485);
+    } else if(image.getLayoutY() <= 110 && image.getLayoutY() > 90){
+      image.setLayoutX(image.getLayoutX() - villager.getVelocidade());
+      image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
+      image.setRotate(-60);
+    } else if(image.getLayoutY() <= 90){
+      image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
+      image.setRotate(0);
+      image.setLayoutX(460);
     }// Fim das verificacoes de movimentacao
-
     if(image.getLayoutY() < -60){
       villager.setPosicaoIncial(villager.getPosicao());
     }
@@ -205,43 +204,43 @@ public class MovimentoController {
   public void movimentarVillagerEsquerdaCima(Villager villager){
     ImageView image = villager.getVillagerImage();
     
-    if(image.getLayoutY() < 100){
+    if(image.getLayoutY() < 90){
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
-    } else if(image.getLayoutY() >= 100 && image.getLayoutY() < 130){
+    } else if(image.getLayoutY() >= 90 && image.getLayoutY() < 110){
       image.setLayoutX(image.getLayoutX() + villager.getVelocidade());
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(120);
-    } else if(image.getLayoutY() >= 130 && image.getLayoutY() < 260){
+    } else if(image.getLayoutY() >= 110 && image.getLayoutY() < 240){
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(180);
       image.setLayoutX(485);
-    } else if(image.getLayoutY() >= 260 && image.getLayoutY() < 290){
+    } else if(image.getLayoutY() >= 240 && image.getLayoutY() < 260){
       image.setLayoutX(image.getLayoutX() - villager.getVelocidade());
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(240);
-    } else if(image.getLayoutY() >= 290 && image.getLayoutY() < 420){
+    } else if(image.getLayoutY() >= 260 && image.getLayoutY() < 390){
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(180);
-      image.setLayoutX(458);
-    } else if(image.getLayoutY() >= 420 && image.getLayoutY() < 450){
+      image.setLayoutX(460);
+    } else if(image.getLayoutY() >= 390 && image.getLayoutY() < 410){
       image.setLayoutX(image.getLayoutX() + villager.getVelocidade());
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(120);
-    } else if(image.getLayoutY() >= 450 && image.getLayoutY() < 580){
+    } else if(image.getLayoutY() >= 410 && image.getLayoutY() < 540){
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(180);
       image.setLayoutX(485);
-    } else if(image.getLayoutY() >= 580 && image.getLayoutY() < 610){
+    } else if(image.getLayoutY() >= 540 && image.getLayoutY() < 560){
       image.setLayoutX(image.getLayoutX() - villager.getVelocidade());
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(240);
-    } else if(image.getLayoutY() >= 610){
+    } else if(image.getLayoutY() >= 560){
       image.setLayoutY(image.getLayoutY() + villager.getVelocidade());
       image.setRotate(180);
-      image.setLayoutX(458);
+      image.setLayoutX(460);
     }// Fim das verificacoes de movimentacao
 
-    if(image.getLayoutY() > 760){
+    if(image.getLayoutY() > 700){
       villager.setPosicaoIncial(villager.getPosicao());
     }
   }// Fim do metodo movimentarVillagerEsquerdaCima

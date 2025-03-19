@@ -37,23 +37,23 @@ public class Villager{
   public void setPosicaoIncial(int posicao){
     switch (posicao){
       case 1:
-        villagerImagem.setLayoutY(760); // Define a coordenada Y
-        villagerImagem.setLayoutX(513); // Define a coordenada X
+        villagerImagem.setLayoutY(700); // Define a coordenada Y
+        villagerImagem.setLayoutX(508); // Define a coordenada X
         villagerImagem.setRotate(0); // Define a rotacao do villager
         break;
       case 2:
         villagerImagem.setLayoutY(-60);
-        villagerImagem.setLayoutX(513);
+        villagerImagem.setLayoutX(508);
         villagerImagem.setRotate(180);
         break;
       case 3:
-        villagerImagem.setLayoutY(760);
-        villagerImagem.setLayoutX(458);
+        villagerImagem.setLayoutY(700);
+        villagerImagem.setLayoutX(460);
         villagerImagem.setRotate(0);
         break;
       case 4:
         villagerImagem.setLayoutY(-60);
-        villagerImagem.setLayoutX(458);
+        villagerImagem.setLayoutX(460);
         villagerImagem.setRotate(180);
         break;
     }// Fim do switch
