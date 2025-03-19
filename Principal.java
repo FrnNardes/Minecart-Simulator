@@ -15,6 +15,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import controller.BaseController;
+import controller.MenuController;
+import controller.SimulacaoController;
+import controller.TutorialController;
+
+@SuppressWarnings("unused")
+
 public class Principal extends Application{
 
   /* ***************************************************************
