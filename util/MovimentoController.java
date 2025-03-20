@@ -24,7 +24,7 @@ public class MovimentoController {
 
   /* ***************************************************************
   * Metodo: movimentarVillagers
-  * Funcao: Movimenta o Villager de acordo com sua posicao atual
+  * Funcao: Movimenta o Villager chamando a funcao adequada de acordo com sua posicao atual
   * Parametros: villager -> Objeto Villager a ser movimentado
   * Retorno: void
   *************************************************************** */
@@ -49,7 +49,7 @@ public class MovimentoController {
 
   /* ***************************************************************
   * Metodo: movimentarVillagerDireitaBaixo
-  * Funcao: Movimenta o Villager para baixo na trilha da direita
+  * Funcao: Movimenta o Villager para baixo no trilho da direita
   * Parametros: villager -> Objeto Villager a ser movimentado
   * Retorno: void
   *************************************************************** */
@@ -95,12 +95,12 @@ public class MovimentoController {
     // If que verifica o limiar das bordas da aplicacao, resetando a posicao incial do villager quando ele ultrapassa-la
     if(image.getLayoutY() < -60){
       villager.setPosicaoIncial(villager.getPosicao());
-    }
+    }// Fim do if
   }// Fim do metodo movimentarVillagerDiretaBaixo
 
   /* ***************************************************************
   * Metodo: movimentarVillagerDireitaCima
-  * Funcao: Movimenta o Villager para cima na trilha da direita
+  * Funcao: Movimenta o Villager para cima no trilho da direita
   * Parametros: villager -> Objeto Villager a ser movimentado
   * Retorno: void
   *************************************************************** */
@@ -145,12 +145,12 @@ public class MovimentoController {
 
     if(image.getLayoutY() > 700){
       villager.setPosicaoIncial(villager.getPosicao());
-    }
+    }// Fim do if
   }// Fim do metodo movimentarVillagerDiretaCima
 
   /* ***************************************************************
   * Metodo: movimentarVillagerEsquerdaBaixo
-  * Funcao: Movimenta o Villager para baixo na trilha da esquerda
+  * Funcao: Movimenta o Villager para baixo no trilho da esquerda
   * Parametros: villager -> Objeto Villager a ser movimentado
   * Retorno: void
   *************************************************************** */
@@ -195,12 +195,12 @@ public class MovimentoController {
 
     if(image.getLayoutY() < -60){
       villager.setPosicaoIncial(villager.getPosicao());
-    }
+    }// Fim do if
   }// Fim do metodo movimentarVillagerEsquerdaBaixo
 
   /* ***************************************************************
   * Metodo: movimentarVillagerEsquerdaCima
-  * Funcao: Movimenta o Villager para cima na trilha da esquerda
+  * Funcao: Movimenta o Villager para cima no trilho da esquerda
   * Parametros: villager -> Objeto Villager a ser movimentado
   * Retorno: void
   *************************************************************** */
@@ -245,6 +245,6 @@ public class MovimentoController {
 
     if(image.getLayoutY() > 700){
       villager.setPosicaoIncial(villager.getPosicao());
-    }
+    }// Fim do if
   }// Fim do metodo movimentarVillagerEsquerdaCima
 }// Fim da classe MovimentoController

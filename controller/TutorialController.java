@@ -8,29 +8,33 @@
 *************************************************************** */
 package controller;
 
+// Importando as bibliotecas necessarias
 import java.io.IOException;
-
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class TutorialController extends BaseController{
-  protected static int posicaoInicialDireita = 1; // Posicao incial em baixo 
-  protected static int posicaoInicialEsquerda = 3; // Posicao incial em baixo 
+public class TutorialController extends BaseController implements Initializable{
+  protected static int posicaoInicialDireita = 1; // Setando a posicao incial da direita em baixo 
+  protected static int posicaoInicialEsquerda = 3; // Setando a posicao incial da esquerda em baixo 
 
   @FXML
-  private ImageView botaoProsseguir; // Imagem do botao para pegar a cena atual
+  private ImageView botaoProsseguir, botaoVoltar; // Instanciando os botoes
 
   @FXML
-  private ImageView setaDireitaCima, setaDireitaBaixo, setaEsquerdaCima, setaEsquerdaBaixo; // Imagens das setas dos botoes
+  private ImageView setaDireitaCima, setaDireitaBaixo, setaEsquerdaCima, setaEsquerdaBaixo; // Instanciando imagens das setas dos botoes
 
   @FXML
-  private ImageView imagemVillagerDireita, imagemVillagerEsquerda; // Imagens dos villagers na simulacao
+  private ImageView imagemVillagerDireita, imagemVillagerEsquerda; // Instanciando imagens dos villagers na simulacao
 
   /* ***************************************************************
-  * Metodo: subirVillagerDireita
+  * Metodo: botaoDireita
   * Funcao: Move o Villager da direita para a posicao superior ou inferior
+  *         e faz uma animacao nas setas do botao
   * Parametros: event -> Acao do botao
   * Retorno: void
   *************************************************************** */
@@ -41,22 +45,22 @@ public class TutorialController extends BaseController{
       imagemVillagerDireita.setLayoutX(508); // Define a coordenada X
       imagemVillagerDireita.setRotate(180); // Define a rotacao do villager
       posicaoInicialDireita = 2; // Altera a posicao incial 
-      setaDireitaBaixo.setOpacity(1);
-      setaDireitaCima.setOpacity(0.2);
+      setaDireitaBaixo.setOpacity(1); // Define a opacidade das setas
+      setaDireitaCima.setOpacity(0.2); 
     } else{
-      imagemVillagerDireita.setLayoutY(635); // Define a coordenada Y
-      imagemVillagerDireita.setLayoutX(508); // Define a coordenada X
-      imagemVillagerDireita.setRotate(0); // Define a rotacao do villager
-      posicaoInicialDireita = 1; // Altera a posicao incial 
-      setaDireitaBaixo.setOpacity(0.2);
+      imagemVillagerDireita.setLayoutY(635); 
+      imagemVillagerDireita.setLayoutX(508); 
+      imagemVillagerDireita.setRotate(0); 
+      posicaoInicialDireita = 1;  
+      setaDireitaBaixo.setOpacity(0.2); 
       setaDireitaCima.setOpacity(1);
-    }
-    
+    }// Fim das verificacoes
   }// Fim do metodo botaoDireita
 
   /* ***************************************************************
   * Metodo: botaoEsquerda
   * Funcao: Move o Villager da esquerda para a posicao superior ou inferior
+  *         e faz uma animacao nas setas do botao
   * Parametros: event -> Acao do botao
   * Retorno:void
   *************************************************************** */
@@ -67,17 +71,16 @@ public class TutorialController extends BaseController{
       imagemVillagerEsquerda.setLayoutX(460); // Define a coordenada X
       imagemVillagerEsquerda.setRotate(180); // Define a rotacao do villager
       posicaoInicialEsquerda = 4; // Altera a posicao incial
-      setaEsquerdaBaixo.setOpacity(1);
-      setaEsquerdaCima.setOpacity(0.2);
+      setaEsquerdaBaixo.setOpacity(1); // Define a opacidade das setas
+      setaEsquerdaCima.setOpacity(0.2); 
     } else {
-      imagemVillagerEsquerda.setLayoutY(635); // Define a coordenada Y
-      imagemVillagerEsquerda.setLayoutX(460); // Define a coordenada X
-      imagemVillagerEsquerda.setRotate(0); // Define a rotacao do villager
-      posicaoInicialEsquerda = 3; // Altera a posicao incial
+      imagemVillagerEsquerda.setLayoutY(635); 
+      imagemVillagerEsquerda.setLayoutX(460); 
+      imagemVillagerEsquerda.setRotate(0); 
+      posicaoInicialEsquerda = 3; 
       setaEsquerdaBaixo.setOpacity(0.2);
       setaEsquerdaCima.setOpacity(1);
-    }
-    
+    }// Fim do if
   }// Fim do metodo botaoEsquerda
   
   /* ***************************************************************
@@ -105,4 +108,16 @@ public class TutorialController extends BaseController{
     Stage stage = (Stage) botaoProsseguir.getScene().getWindow();
     trocarTela(stage,"/view/menu.fxml");
   }// Fim do metodo iniciarMenu
+
+  /* ***************************************************************
+  * Metodo: initialize
+  * Funcao: Inicializa a animacao dos botoes
+  * Parametros: location -> URL do arquivo FXML
+  *             resources -> Recursos utilizados na interface
+  * Retorno: void
+  *************************************************************** */
+  @Override
+  public void initialize(URL location, ResourceBundle resources){
+    aplicarAnimacaoBotao(botaoProsseguir, botaoVoltar); // Aplicando a animacao aos botoes
+  }// Fim do metodo initialize
 }// Fim da classe TutorialController

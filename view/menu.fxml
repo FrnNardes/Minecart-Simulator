@@ -32,7 +32,7 @@
             <Image url="@../assets/Iniciar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="48.0" fitWidth="282.0" layoutX="244.0" layoutY="387.0" onMouseClicked="#fecharPrograma" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="botaoSair" fitHeight="48.0" fitWidth="282.0" layoutX="244.0" layoutY="387.0" onMouseClicked="#fecharPrograma" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/menuButtons.png" />
          </image>

@@ -67,12 +67,12 @@
             <Image url="@../assets/minus.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="190.0" layoutX="798.0" layoutY="14.0" onMouseClicked="#resetarPosicao" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="botaoReset" fitHeight="40.0" fitWidth="190.0" layoutX="798.0" layoutY="14.0" onMouseClicked="#resetarPosicao" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/restartButton.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="948.0" layoutY="14.0" onMouseClicked="#fecharPrograma" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="botaoSair" fitHeight="40.0" fitWidth="40.0" layoutX="948.0" layoutY="14.0" onMouseClicked="#fecharPrograma" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/leaveButton.png" />
          </image>

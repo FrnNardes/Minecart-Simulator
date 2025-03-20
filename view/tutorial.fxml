@@ -112,7 +112,7 @@
             <Image url="@../assets/TUTORIAL.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="botaoProsseguir1" fitHeight="85.0" fitWidth="297.0" layoutX="17.0" layoutY="642.0" onMouseClicked="#iniciarMenu" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="botaoVoltar" fitHeight="85.0" fitWidth="297.0" layoutX="17.0" layoutY="642.0" onMouseClicked="#iniciarMenu" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/menuButtons.png" />
          </image>

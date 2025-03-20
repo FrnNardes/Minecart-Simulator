@@ -8,6 +8,7 @@
 *************************************************************** */
 package controller;
 
+// Importando as bibliotecas necessarias
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
@@ -29,7 +30,7 @@ public class SimulacaoController extends BaseController implements Initializable
   private ImageView imagemVillagerDireita, imagemVillagerEsquerda; // Imagens dos villagers na simulacao
 
   @FXML
-  private ImageView setaDireitaCima, setaDireitaBaixo, setaEsquerdaCima, setaEsquerdaBaixo; // Imagens das setas dos botoes
+  private ImageView botaoReset, botaoSair, setaDireitaCima, setaDireitaBaixo, setaEsquerdaCima, setaEsquerdaBaixo; // Instanciando imagens dos botoes e das setas dos botoes
 
   @FXML
   private Slider sliderDireita, sliderEsquerda; // Sliders que controlam a velocidade
@@ -79,6 +80,7 @@ public class SimulacaoController extends BaseController implements Initializable
   /* ***************************************************************
   * Metodo: botaoDireita
   * Funcao: Move o Villager da direita para a posicao superior ou inferior
+  *         e faz uma animacao nas setas do botao
   * Parametros: event -> Acao do botao
   * Retorno: void
   *************************************************************** */
@@ -92,13 +94,13 @@ public class SimulacaoController extends BaseController implements Initializable
       posicionarVillagers(1, villagerEsquerda.getPosicao());
       setaDireitaCima.setOpacity(1); // Define a opacidade das setas
       setaDireitaBaixo.setOpacity(0.2);
-    }
-    
+    }// Fim das verificacoes
   }// Fim do metodo botaoDireita
 
   /* ***************************************************************
   * Metodo: botaoEsquerda
   * Funcao: Move o Villager da esquerda para a posicao superior ou inferior
+  *         e faz uma animacao nas setas do botao
   * Parametros: event -> Acao do botao
   * Retorno: void
   *************************************************************** */
@@ -112,7 +114,7 @@ public class SimulacaoController extends BaseController implements Initializable
       posicionarVillagers(villagerDireita.getPosicao(), 3);
       setaEsquerdaCima.setOpacity(1); // Define a opacidade das setas
       setaEsquerdaBaixo.setOpacity(0.2);
-    }
+    }// Fim das verificacoes
   }// Fim do metodo botaoEsquerda
 
   /* ***************************************************************
@@ -130,7 +132,7 @@ public class SimulacaoController extends BaseController implements Initializable
   /* ***************************************************************
   * Metodo: resetarPosicao
   * Funcao: Reseta a posicao dos villagers e trazem eles para a posicao incial
-  * Parametros: event -> Evento acionado pelo usuario
+  * Parametros: Nenhum
   * Retorno: void
   *************************************************************** */
   @FXML
@@ -150,6 +152,7 @@ public class SimulacaoController extends BaseController implements Initializable
   @Override
   public void initialize(URL location, ResourceBundle resources){
     posicionarVillagers(TutorialController.posicaoInicialDireita, TutorialController.posicaoInicialEsquerda); // Posiciona os mobs nas posicoes indicadas na tela de tutorial
+    aplicarAnimacaoBotao(botaoReset, botaoSair); // Aplicando a animacao aos botoes
 
     if(TutorialController.posicaoInicialDireita == 2){ // Verifica a posicao que o villager começa e define a opacidade das setas de acordo
       setaDireitaCima.setOpacity(0.2);
@@ -157,7 +160,7 @@ public class SimulacaoController extends BaseController implements Initializable
     } else {
       setaDireitaCima.setOpacity(1);
       setaDireitaBaixo.setOpacity(0.2);
-    }
+    }// Fim das verificacoes
 
     if(TutorialController.posicaoInicialEsquerda == 4){ // Verifica a posicao que o villager começa e define a opacidade das setas de acordo
       setaEsquerdaCima.setOpacity(0.2);
@@ -165,7 +168,7 @@ public class SimulacaoController extends BaseController implements Initializable
     } else {
       setaEsquerdaCima.setOpacity(1);
       setaEsquerdaBaixo.setOpacity(0.2);
-    }
+    }// Fim das verificacoes
 
     sliderDireita.setValue(2); // Define a velocidade inicial do villager direito em 2
     sliderEsquerda.setValue(2); // Define a velocidade inicial do villager esquerdo em 2

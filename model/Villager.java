@@ -20,7 +20,7 @@ public class Villager{
   * Funcao: Inicializa um objeto Villager com a imagem e a posicao especificada
   * Parametros: imageVillager -> Objeto ImageView representando a imagem do villager
   *             posicao -> Inteiro indicando a posicao inicial do villager
-  * Retorno: void
+  * Retorno: Instancia de um objeto Villager
   *************************************************************** */
   public Villager(ImageView imageVillager, int posicao){
     this.villagerImagem = imageVillager;
@@ -91,7 +91,7 @@ public class Villager{
 
   /* ***************************************************************
   * Metodo: getVelocidade
-  * Funcao: Retorna a velocidade do villager
+  * Funcao: Seta a velocidade do villager
   * Parametros: Velocidade
   * Retorno: void
   *************************************************************** */
