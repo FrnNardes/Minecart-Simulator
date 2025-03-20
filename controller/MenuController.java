@@ -2,7 +2,7 @@
 * Autor............: Fernando Nardes Ferreira Neto
 * Matricula........: 202410403
 * Inicio...........: 14/03/2025
-* Ultima alteracao.: 23/03/2025
+* Ultima alteracao.: 20/03/2025
 * Nome.............: MenuController.java
 * Funcao...........: Classe controladora da tela de menu, gerenciando os botoes de iniciar e sair do programa.
 *************************************************************** */
@@ -21,7 +21,7 @@ public class MenuController extends BaseController{
   
   /* ***************************************************************
   * Metodo: iniciarSimulacao
-  * Funcao: Troca a tela atual para a tela de simulacao
+  * Funcao: Troca a tela atual para a tela de tutorial
   * Parametros: nenhum
   * Retorno: void
   *************************************************************** */
@@ -29,5 +29,5 @@ public class MenuController extends BaseController{
   private void iniciarTutorial() throws IOException{
     Stage stage = (Stage) botaoIniciar.getScene().getWindow();
     trocarTela(stage, "/view/tutorial.fxml");
-  }// Fim do metodo iniciarSimulacao
+  }// Fim do metodo iniciarTutorial
 }// Fim da classe MenuController

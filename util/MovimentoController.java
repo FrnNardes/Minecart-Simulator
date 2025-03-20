@@ -2,9 +2,9 @@
 * Autor............: Fernando Nardes Ferreira Neto
 * Matricula........: 202410403
 * Inicio...........: 14/03/2025
-* Ultima alteracao.: 23/03/2025
+* Ultima alteracao.: 20/03/2025
 * Nome.............: MovimentoController.java
-* Funcao...........: Responsavel pelo controle do movimento dos Villagers na simulacao.
+* Funcao...........: Classe responsavel pelo controle do movimento dos Villagers na simulacao, fazendo curvas e acelerando ele através de verificacoes de posicoes
 *************************************************************** */
 package util;
 
@@ -16,6 +16,8 @@ public class MovimentoController {
   /* ***************************************************************
   * Construtor: MovimentoController
   * Funcao: Construtor padrao da classe
+  * Parametros: nenhum
+  * Retorno: Objeto do tipo MovimentoController
   *************************************************************** */
   public MovimentoController(){
   }
@@ -90,7 +92,7 @@ public class MovimentoController {
       image.setLayoutX(508);
     }// Fim das verificacoes de movimentacao
     
-    // If que verifica o limiar das bordas da aplicacao, resetando a posicao incial do villager
+    // If que verifica o limiar das bordas da aplicacao, resetando a posicao incial do villager quando ele ultrapassa-la
     if(image.getLayoutY() < -60){
       villager.setPosicaoIncial(villager.getPosicao());
     }
@@ -155,12 +157,12 @@ public class MovimentoController {
   public void movimentarVillagerEsquerdaBaixo(Villager villager){
     ImageView image = villager.getVillagerImage();
     
-    if(image.getLayoutY() > 560){ // Verifica a posicao do villager ate o limite da curva
-      image.setLayoutY(image.getLayoutY() - villager.getVelocidade()); // Movimenta o villager no eixo Y
-    } else if(image.getLayoutY() <= 560 && image.getLayoutY() > 540){ // Verifica a posicao do villager do inicio ate o fim da curva
-      image.setLayoutX(image.getLayoutX() + villager.getVelocidade()); // Modifica o eixo X, realizando a curva
-      image.setLayoutY(image.getLayoutY() - villager.getVelocidade()); // Modifica o eixo Y, realizando a curva
-      image.setRotate(60); // Seta a rotacao para ficar condizente com o trilho
+    if(image.getLayoutY() > 560){
+      image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
+    } else if(image.getLayoutY() <= 560 && image.getLayoutY() > 540){ 
+      image.setLayoutX(image.getLayoutX() + villager.getVelocidade());
+      image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
+      image.setRotate(60);
     } else if(image.getLayoutY() <= 540 && image.getLayoutY() > 410){
       image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
       image.setRotate(0);
@@ -190,6 +192,7 @@ public class MovimentoController {
       image.setRotate(0);
       image.setLayoutX(460);
     }// Fim das verificacoes de movimentacao
+
     if(image.getLayoutY() < -60){
       villager.setPosicaoIncial(villager.getPosicao());
     }

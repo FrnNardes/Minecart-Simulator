@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.441" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SimulacaoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SimulacaoController">
    <children>
       <ImageView blendMode="SRC_ATOP" fitHeight="709.0" fitWidth="1316.0" layoutX="-122.0" preserveRatio="true">
          <image>
@@ -18,33 +18,31 @@
             <Image url="@../assets/VillagerTopDownOnCart.png" />
          </image>
       </ImageView>
-      <Button layoutX="577.0" layoutY="652.0" mnemonicParsing="false" onAction="#subirVillagerDireita" prefHeight="43.0" prefWidth="54.0" styleClass="arrow" stylesheets="@style/style.css" text="⬆" />
-      <Button layoutX="575.0" layoutY="5.0" mnemonicParsing="false" onAction="#descerVillagerDireita" prefHeight="15.0" prefWidth="58.0" styleClass="arrow" stylesheets="@style/style.css" text="⬇" />
+      <Button layoutX="575.0" layoutY="652.0" mnemonicParsing="false" onAction="#botaoDireita" prefHeight="43.0" prefWidth="54.0" styleClass="arrow" stylesheets="@style/style.css" />
       <ImageView fx:id="imagemVillagerEsquerda" fitHeight="60.0" fitWidth="60.0" layoutX="462.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
          <image>
             <Image url="@../assets/VillagerTopDownOnCart.png" />
          </image>
       </ImageView>
-      <Button layoutX="383.0" layoutY="652.0" mnemonicParsing="false" onAction="#subirVillagerEsquerda" prefHeight="44.0" prefWidth="54.0" styleClass="arrow" stylesheets="@style/style.css" text="⬆" />
-      <Button layoutX="381.0" layoutY="5.0" mnemonicParsing="false" onAction="#descerVillagerEsquerda" prefHeight="19.0" prefWidth="58.0" styleClass="arrow" stylesheets="@style/style.css" text="⬇" />
-      <Slider fx:id="sliderDireita" layoutX="503.0" layoutY="351.0" max="10.0" prefHeight="14.0" prefWidth="154.0" rotate="270.0" styleClass="custom-slider" stylesheets="@style/style.css" />
-      <Slider fx:id="sliderEsquerda" layoutX="358.0" layoutY="352.0" max="10.0" prefHeight="14.0" prefWidth="154.0" rotate="270.0" styleClass="custom-slider" stylesheets="@style/style.css" />
-      <ImageView fitHeight="50.0" fitWidth="28.0" layoutX="590.0" layoutY="660.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+      <Button layoutX="383.0" layoutY="652.0" mnemonicParsing="false" onAction="#botaoEsquerda" prefHeight="44.0" prefWidth="54.0" styleClass="arrow" stylesheets="@style/style.css" />
+      <Slider fx:id="sliderDireita" layoutX="503.0" layoutY="351.0" max="10.0" prefHeight="14.0" prefWidth="154.0" rotate="270.0" styleClass="custom-slider" stylesheets="@style/style.css" value="2.0" />
+      <Slider fx:id="sliderEsquerda" layoutX="358.0" layoutY="352.0" max="10.0" prefHeight="14.0" prefWidth="154.0" rotate="270.0" styleClass="custom-slider" stylesheets="@style/style.css" value="2.0" />
+      <ImageView fx:id="setaDireitaCima" fitHeight="50.0" fitWidth="28.0" layoutX="577.0" layoutY="660.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
             <Image url="@../assets/arrowUp.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="28.0" layoutX="396.0" layoutY="660.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+      <ImageView fx:id="setaEsquerdaCima" fitHeight="50.0" fitWidth="28.0" layoutX="408.0" layoutY="660.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
             <Image url="@../assets/arrowUp.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="28.0" layoutX="590.0" layoutY="13.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+      <ImageView fx:id="setaDireitaBaixo" fitHeight="50.0" fitWidth="28.0" layoutX="600.0" layoutY="660.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
          <image>
             <Image url="@../assets/arrowDown.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="28.0" layoutX="396.0" layoutY="13.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+      <ImageView fx:id="setaEsquerdaBaixo" fitHeight="50.0" fitWidth="28.0" layoutX="385.0" layoutY="660.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
          <image>
             <Image url="@../assets/arrowDown.png" />
          </image>
@@ -69,14 +67,19 @@
             <Image url="@../assets/minus.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="187.0" layoutX="808.0" layoutY="8.0" onMouseClicked="#resetarPosicao" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="190.0" layoutX="798.0" layoutY="14.0" onMouseClicked="#resetarPosicao" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/restartButton.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="38.0" layoutX="948.0" layoutY="8.0" onMouseClicked="#fecharPrograma" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="948.0" layoutY="14.0" onMouseClicked="#fecharPrograma" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/leaveButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="187.0" layoutX="818.0" layoutY="14.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Reset.png" />
          </image>
       </ImageView>
    </children>

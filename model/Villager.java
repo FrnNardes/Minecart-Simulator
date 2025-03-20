@@ -2,9 +2,9 @@
 * Autor............: Fernando Nardes Ferreira Neto
 * Matricula........: 202410403
 * Inicio...........: 14/03/2025
-* Ultima alteracao.: 23/03/2025
+* Ultima alteracao.: 20/03/2025
 * Nome.............: Villager.java
-* Funcao...........: Classe modelo do objeto Villager, personagem no qual sera o nosso trem na aplicacao
+* Funcao...........: Classe modelo do objeto Villager, no qual sera a representacao do trem na aplicacao
 *************************************************************** */
 package model;
 

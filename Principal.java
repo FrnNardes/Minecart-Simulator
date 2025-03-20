@@ -2,7 +2,7 @@
 * Autor............: Fernando Nardes Ferreira Neto
 * Matricula........: 202410403
 * Inicio...........: 14/03/2025
-* Ultima alteracao.: 23/03/2025
+* Ultima alteracao.: 20/03/2025
 * Nome.............: Principal.java
 * Funcao...........: Classe principal que inicializa a aplicacao com as bibliotecas
  necessaria para a execucao do JavaFX, abrindo a prima tela carregando o fxml do menu.
@@ -12,6 +12,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -35,6 +36,9 @@ public class Principal extends Application{
     FXMLLoader loader = new FXMLLoader(getClass().getResource("view/menu.fxml"));// Carrega o fxml do menu
     Parent root = loader.load();// Define o root com o fxml e carrega o controller do menu atraves do metodo load
     Scene scene = new Scene(root);// Define a cena com o root
+
+    Image icon = new Image(getClass().getResourceAsStream("./assets/minecraftIcon.png"));// Define o icone do Stage
+    primaryStage.getIcons().add(icon);// Adiciona o icone ao Stage
 
     primaryStage.setScene(scene);// Define o Stage com a cena
     primaryStage.setTitle("MineCart");// Define o titulo do Stage
