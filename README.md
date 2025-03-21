@@ -1,76 +1,67 @@
-# 🚆 Simulador de Trens em Java
+#  Minecart Simulator
 
 ## 📌 Sobre o Projeto
-O **Simulador de Trens** é um projeto desenvolvido em Java que tem como objetivo simular o funcionamento de um sistema ferroviário, incluindo trilhos, estações, composições ferroviárias e o gerenciamento do fluxo de trens. Este projeto pode ser utilizado para estudos de logística, simulações acadêmicas ou simplesmente para entretenimento.
-
-## 🎯 Funcionalidades
-- 🔄 **Simulação de Trens**: Movimentação dos trens em diferentes trilhos.
-- 🛤️ **Gestão de Trilhos**: Definição de rotas, cruzamentos e bifurcações.
-- 🚉 **Estações**: Paradas programadas e embarque/desembarque de passageiros.
-- ⏱️ **Controle de Tempo**: Simulação de intervalos entre viagens.
-- 🔄 **Gerenciamento Dinâmico**: Controle em tempo real dos trens e suas trajetórias.
-- 🖥️ **Interface Gráfica (Opcional)**: Representação visual do sistema ferroviário.
+O **Minecart Simulator** é um projeto desenvolvido em Java que tem como objetivo simular o funcionamento de um sistema ferroviário e o gerenciamento do fluxo de trens, utilizando os conceitos de Programação Concorrente.
 
 ## 🛠️ Tecnologias Utilizadas
-- **Java 11+**
-- **Java Swing/JavaFX** (para interface gráfica, opcional)
+- **Java 8
+- **JavaFX e CSS**
 - **Threads e Concurrency** (para simulação realista de múltiplos trens)
-- **Arquivos JSON/XML** (para configuração do ambiente)
 
 ## 🚀 Como Executar
 1. **Clone o repositório:**
    ```sh
-   git clone https://github.com/seu-usuario/simulador-trens.git
+   git clone https://github.com/seu-usuario/minecart-simulator.git
    ```
 2. **Acesse o diretório do projeto:**
    ```sh
-   cd simulador-trens
+   cd minecart-simulator
    ```
 3. **Compile o projeto:**
    ```sh
-   javac -d bin src/*.java
+   javac Principal.java
    ```
 4. **Execute a simulação:**
    ```sh
-   java -cp bin Main
+   java Principal
    ```
 
-## 🖥️ Interface Gráfica (Opcional)
-Se desejar utilizar a interface gráfica, certifique-se de instalar o JavaFX e execute:
+## 🖥️ Atenção
+Certifique-se de instalar a versão 8 do Java, na qual já vem com o JavaFX i
 ```sh
-java --module-path "path/to/javafx/lib" --add-modules javafx.controls,javafx.fxml -cp bin Main
+java -version
+java version "1.8.0_xxx"
+Java(TM) SE Runtime Environment (build 1.8.0_xxx-xxx)
 ```
 
 ## 📂 Estrutura do Projeto
 ```
-📂 simulador-trens
- ├── 📂 src
- │   ├── Main.java
- │   ├── Trem.java
- │   ├── Trilho.java
- │   ├── Estacao.java
- │   ├── Simulador.java
- │   └── ...
- ├── 📂 bin
+📂 minecart-simulator
+ ├── 📂 model
+ │   ├── Villager.java
+ ├── 📂 view
+ │   ├── menu.FXML
+ │   ├── tutorial.FXML
+ │   ├── simulacao.FXML
+ │   ├── 📂 style
+ │   │   └── style.css
+ ├── 📂 controller
+ │   ├── BaseController.java
+ │   ├── MenuController.java
+ │   ├── TutorialController.java
+ │   ├── SimulacaoController.java
  ├── 📂 assets
- │   ├── trilhos.json
- │   ├── estacoes.json
- │   └── trens.json
+ │   ├── backgroundDay.png
+ │   ├── minecraftIcon.png
+ │   ├── VillagerTopDownOnCart.png
+ │   ├── ...
+ ├── Principal.java
  ├── README.md
- └── .gitignore
 ```
-
-## 🤝 Contribuição
-Contribuições são bem-vindas! Siga estes passos:
-1. **Fork** o repositório
-2. Crie uma **branch** com sua feature (`git checkout -b minha-feature`)
-3. Commit suas alterações (`git commit -m 'Adicionando nova feature'`)
-4. Faça o push para a branch (`git push origin minha-feature`)
-5. Abra um **Pull Request**
 
 ## 📄 Licença
 Este projeto está sob a **MIT License**. Sinta-se livre para utilizá-lo e modificá-lo.
 
 ---
-Criado com ❤️ por [Seu Nome](https://github.com/seu-usuario)
+Criado por Fernando Nardes (https://github.com/FrnNardes)
 
