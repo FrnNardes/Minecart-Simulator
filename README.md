@@ -66,5 +66,5 @@ Java(TM) SE Runtime Environment (build 1.8.0_xxx-xxx)
 Este projeto está sob a **MIT License**. Sinta-se livre para utilizá-lo e modificá-lo.
 
 ---
-Criado por Fernando Nardes (https://github.com/FrnNardes)
+Criado por [Fernando Nardes](https://github.com/FrnNardes)
 
