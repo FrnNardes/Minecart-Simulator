@@ -11,7 +11,7 @@ O **Minecart Simulator** é um projeto desenvolvido em Java que tem como objetiv
 ## 🚀 Como Executar
 1. **Clone o repositório:**
    ```sh
-   git clone https://github.com/seu-usuario/minecart-simulator.git
+   git clone https://github.com/FrnNardes/minecart-simulator.git
    ```
 2. **Acesse o diretório do projeto:**
    ```sh
@@ -29,7 +29,7 @@ O **Minecart Simulator** é um projeto desenvolvido em Java que tem como objetiv
 ## 🖥️ Execução
 ![Demonstração](assets/execucao.gif)
 
-## 🖥️ Atenção
+## ⚠️ Atenção
 Certifique-se de instalar a versão 8 do Java, na qual já vem com o JavaFX i
 ```sh
 java -version
