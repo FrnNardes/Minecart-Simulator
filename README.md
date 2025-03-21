@@ -25,6 +25,9 @@ O **Minecart Simulator** é um projeto desenvolvido em Java que tem como objetiv
    ```sh
    java Principal
    ```
+   
+## 🖥️ Execução
+![Demonstração](assets/execucao.gif)
 
 ## 🖥️ Atenção
 Certifique-se de instalar a versão 8 do Java, na qual já vem com o JavaFX i
