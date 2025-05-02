@@ -15,21 +15,29 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class TutorialController extends BaseController implements Initializable{
   protected static int posicaoInicialDireita = 1; // Setando a posicao incial da direita em baixo 
   protected static int posicaoInicialEsquerda = 3; // Setando a posicao incial da esquerda em baixo 
+  protected static int sistemaColisao; // Setando o sistema de colisao inicial com colisao
+
+  Image botaoVerde = new Image(getClass().getResourceAsStream("/assets/menuButtonGreen.png"));
+  Image botaoCinza = new Image(getClass().getResourceAsStream("/assets/menuButton.png"));
 
   @FXML
-  private ImageView botaoProsseguir, botaoVoltar; // Instanciando os botoes
+  private ImageView botaoProsseguir, botaoVoltar, botaoComColisao, botaoVariavelDeTravamento, botaoEstritaAlternancia, botaoPeterson; // Instanciando os botoes
 
   @FXML
   private ImageView setaDireitaCima, setaDireitaBaixo, setaEsquerdaCima, setaEsquerdaBaixo; // Instanciando imagens das setas dos botoes
 
   @FXML
   private ImageView imagemVillagerDireita, imagemVillagerEsquerda; // Instanciando imagens dos villagers na simulacao
+
+  ImageView botaoSelecionado = botaoComColisao;
 
   /* ***************************************************************
   * Metodo: botaoDireita
@@ -82,6 +90,38 @@ public class TutorialController extends BaseController implements Initializable{
       setaEsquerdaCima.setOpacity(1);
     }// Fim do if
   }// Fim do metodo botaoEsquerda
+
+  @FXML
+  public void selecionaSistemaColisao(MouseEvent event){
+    ImageView clicado = (ImageView) event.getSource();
+    String idClicado = clicado.getId();
+    
+    if(idClicado.equals("botaoComColisao")){
+      botaoComColisao.setImage(botaoVerde);
+      botaoVariavelDeTravamento.setImage(botaoCinza);
+      botaoEstritaAlternancia.setImage(botaoCinza);
+      botaoPeterson.setImage(botaoCinza);
+      sistemaColisao = 0;
+    } else if(idClicado.equals("botaoVariavelDeTravamento")){
+      botaoComColisao.setImage(botaoCinza);
+      botaoVariavelDeTravamento.setImage(botaoVerde);
+      botaoEstritaAlternancia.setImage(botaoCinza);
+      botaoPeterson.setImage(botaoCinza);
+      sistemaColisao = 1;
+    } else if(idClicado.equals("botaoEstritaAlternancia")){
+      botaoComColisao.setImage(botaoCinza);
+      botaoVariavelDeTravamento.setImage(botaoCinza);
+      botaoEstritaAlternancia.setImage(botaoVerde);
+      botaoPeterson.setImage(botaoCinza);
+      sistemaColisao = 2;
+    } else {
+      botaoComColisao.setImage(botaoCinza);
+      botaoVariavelDeTravamento.setImage(botaoCinza);
+      botaoEstritaAlternancia.setImage(botaoCinza);
+      botaoPeterson.setImage(botaoVerde);
+      sistemaColisao = 3;
+    }
+  }
   
   /* ***************************************************************
   * Metodo: iniciarSimulacao

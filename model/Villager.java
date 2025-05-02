@@ -8,12 +8,19 @@
 *************************************************************** */
 package model;
 
+import javafx.application.Platform;
+import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
+import util.MovimentoController;
 
-public class Villager{
+public class Villager extends Thread{
+  private MovimentoController movimentoController = new MovimentoController(); // Controlador responsavel pelo movimento dos Villagers
   private ImageView villagerImagem; // Representa a imagem do villager na interface grafica
-  private double velocidade; // Velocidade padrao do villager
+  private volatile double velocidade; // Velocidade padrao do villager
   private int posicao; // Posicao inicial do villager
+  private Slider slider;
+  private boolean running = true;
+  private int tecnicaColisao;
 
   /* ***************************************************************
   * Metodo: Villager (Construtor)
@@ -22,9 +29,11 @@ public class Villager{
   *             posicao -> Inteiro indicando a posicao inicial do villager
   * Retorno: Instancia de um objeto Villager
   *************************************************************** */
-  public Villager(ImageView imageVillager, int posicao){
+  public Villager(ImageView imageVillager, int posicao, Slider slider, int tecnica){
     this.villagerImagem = imageVillager;
     this.posicao = posicao;
+    this.slider = slider;
+    this.tecnicaColisao = tecnica;
     setPosicaoIncial(posicao); // Chama metodo para definir a posicao inicial
   }// Fim do construtor Villager
 
@@ -59,6 +68,26 @@ public class Villager{
     }// Fim do switch
   }// Fim do metodo setPosicaoIncial
 
+  @Override
+  public void run(){
+    while(running){
+      Platform.runLater(() -> {
+        this.setVelocidade(slider.getValue());
+        movimentoController.movimentarVillagers(this);
+      });// Fim do Platform.runLater
+      try {
+        Thread.sleep(10); // Pausa de 10ms
+      } catch (InterruptedException e) {
+          e.printStackTrace();
+      }
+    }
+  }
+
+  public void parar(){
+    running = false;
+    movimentoController.resetarColisao();
+  }
+
   /* ***************************************************************
   * Metodo: getVillagerImage
   * Funcao: Retorna o objeto ImageView associado ao villager
@@ -79,6 +108,10 @@ public class Villager{
     return this.posicao;
   }// Fim do metodo getPosicao
 
+  public void setPosicao(int posicao){
+    this.posicao = posicao;
+  }
+
   /* ***************************************************************
   * Metodo: getVelocidade
   * Funcao: Retorna a velocidade do villager
@@ -98,4 +131,8 @@ public class Villager{
   public void setVelocidade(double velocidade){
     this.velocidade = velocidade;
   }// Fim do metodo setVelocidade
+
+  public int getTecnicaColisao(){
+    return tecnicaColisao;
+  }
 }// Fim da classe Villager

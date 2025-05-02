@@ -24,7 +24,7 @@
       </ImageView>
       <ImageView fx:id="botaoIniciar" fitHeight="48.0" fitWidth="282.0" layoutX="247.0" layoutY="301.0" onMouseClicked="#iniciarTutorial" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/menuButtons.png" />
+            <Image url="@../assets/menuButton.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="20.0" fitWidth="81.0" layoutX="349.0" layoutY="313.0" mouseTransparent="true" preserveRatio="true">
@@ -34,7 +34,7 @@
       </ImageView>
       <ImageView fx:id="botaoSair" fitHeight="48.0" fitWidth="282.0" layoutX="244.0" layoutY="387.0" onMouseClicked="#fecharPrograma" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/menuButtons.png" />
+            <Image url="@../assets/menuButton.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="20.0" fitWidth="61.0" layoutX="362.0" layoutY="399.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">

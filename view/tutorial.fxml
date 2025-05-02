@@ -67,39 +67,14 @@
             <Image url="@../assets/minus.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="182.0" fitWidth="277.0" layoutX="148.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="97.0" fitWidth="227.0" layoutX="396.0" layoutY="542.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/dialogBoxRight.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="123.0" fitWidth="277.0" layoutX="589.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/dialogBoxLeft.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="129.0" fitWidth="277.0" layoutX="568.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/dialogBoxLeft.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="215.0" fitWidth="277.0" layoutX="176.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/dialogBoxRight.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="239.0" layoutX="197.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/AlterarVelocidade.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="45.0" fitWidth="239.0" layoutX="587.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/AlterarVelocidade.png" />
          </image>
       </ImageView>
       <ImageView fx:id="botaoProsseguir" fitHeight="85.0" fitWidth="297.0" layoutX="691.0" layoutY="642.0" onMouseClicked="#iniciarSimulacao" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/menuButtons.png" />
+            <Image url="@../assets/menuButton.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="28.0" fitWidth="155.0" layoutX="773.0" layoutY="651.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
@@ -107,14 +82,14 @@
             <Image url="@../assets/Prosseguir.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="216.0" layoutX="16.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="53.0" fitWidth="312.0" layoutX="24.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/TUTORIAL.png" />
          </image>
       </ImageView>
       <ImageView fx:id="botaoVoltar" fitHeight="85.0" fitWidth="297.0" layoutX="17.0" layoutY="642.0" onMouseClicked="#iniciarMenu" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/menuButtons.png" />
+            <Image url="@../assets/menuButton.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="28.0" fitWidth="94.0" layoutX="124.0" layoutY="651.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
@@ -122,12 +97,7 @@
             <Image url="@../assets/Voltar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="628.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/AlterarPosicao.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="187.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="24.0" fitWidth="165.0" layoutX="423.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/AlterarPosicao.png" />
          </image>
@@ -137,7 +107,7 @@
             <Image url="@../assets/restartButton.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="948.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="948.0" layoutY="14.0" onMouseClicked="#fecharPrograma" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/leaveButton.png" />
          </image>
@@ -145,6 +115,66 @@
       <ImageView fitHeight="40.0" fitWidth="187.0" layoutX="818.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/Reset.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="botaoComColisao" fitHeight="85.0" fitWidth="297.0" layoutX="17.0" layoutY="210.0" onMouseClicked="#selecionaSistemaColisao" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/menuButtonGreen.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="botaoPeterson" fitHeight="85.0" fitWidth="297.0" layoutX="17.0" layoutY="450.0" onMouseClicked="#selecionaSistemaColisao" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/menuButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="botaoEstritaAlternancia" fitHeight="85.0" fitWidth="297.0" layoutX="17.0" layoutY="370.0" onMouseClicked="#selecionaSistemaColisao" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/menuButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="botaoVariavelDeTravamento" fitHeight="85.0" fitWidth="297.0" layoutX="17.0" layoutY="290.0" onMouseClicked="#selecionaSistemaColisao" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/menuButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="82.0" fitWidth="200.0" layoutX="415.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dialogBoxRight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="158.0" layoutX="429.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/AlterarVelocidade.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="97.0" fitWidth="227.0" layoutX="56.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/dialogBoxRight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="24.0" fitWidth="185.0" layoutX="103.0" layoutY="221.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Com-Colisao.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="257.0" layoutX="38.0" layoutY="301.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Variavel-de-Travamento.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="24.0" fitWidth="198.0" layoutX="67.0" layoutY="381.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Estrita-Alternancia.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="219.0" layoutX="56.0" layoutY="462.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Solucao-de-Peterson.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="198.0" layoutX="76.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/ALTERAR-TECNICA.png" />
          </image>
       </ImageView>
    </children>
