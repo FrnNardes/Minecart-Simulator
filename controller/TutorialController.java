@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 public class TutorialController extends BaseController implements Initializable{
   protected static int posicaoInicialDireita = 1; // Setando a posicao incial da direita em baixo 
   protected static int posicaoInicialEsquerda = 3; // Setando a posicao incial da esquerda em baixo 
-  protected static int sistemaColisao; // Setando o sistema de colisao inicial com colisao
+  protected static int sistemaColisao = 0; // Setando o sistema de colisao inicial com colisao
 
   Image botaoVerde = new Image(getClass().getResourceAsStream("/assets/menuButtonGreen.png"));
   Image botaoCinza = new Image(getClass().getResourceAsStream("/assets/menuButton.png"));
@@ -36,8 +36,6 @@ public class TutorialController extends BaseController implements Initializable{
 
   @FXML
   private ImageView imagemVillagerDireita, imagemVillagerEsquerda; // Instanciando imagens dos villagers na simulacao
-
-  ImageView botaoSelecionado = botaoComColisao;
 
   /* ***************************************************************
   * Metodo: botaoDireita
@@ -122,6 +120,30 @@ public class TutorialController extends BaseController implements Initializable{
       sistemaColisao = 3;
     }
   }
+
+  public void verificaSistemaSelecionado(){
+    if(TutorialController.sistemaColisao == 0){
+      botaoComColisao.setImage(botaoVerde);
+      botaoVariavelDeTravamento.setImage(botaoCinza);
+      botaoEstritaAlternancia.setImage(botaoCinza);
+      botaoPeterson.setImage(botaoCinza);
+    } else if(TutorialController.sistemaColisao == 1){
+      botaoComColisao.setImage(botaoCinza);
+      botaoVariavelDeTravamento.setImage(botaoVerde);
+      botaoEstritaAlternancia.setImage(botaoCinza);
+      botaoPeterson.setImage(botaoCinza);
+    } else if(TutorialController.sistemaColisao == 2){
+      botaoComColisao.setImage(botaoCinza);
+      botaoVariavelDeTravamento.setImage(botaoCinza);
+      botaoEstritaAlternancia.setImage(botaoVerde);
+      botaoPeterson.setImage(botaoCinza);
+    } else {
+      botaoComColisao.setImage(botaoCinza);
+      botaoVariavelDeTravamento.setImage(botaoCinza);
+      botaoEstritaAlternancia.setImage(botaoCinza);
+      botaoPeterson.setImage(botaoVerde);
+    }
+  }
   
   /* ***************************************************************
   * Metodo: iniciarSimulacao
@@ -143,8 +165,6 @@ public class TutorialController extends BaseController implements Initializable{
   *************************************************************** */
   @FXML
   public void iniciarMenu() throws IOException{
-    posicaoInicialDireita = 1;
-    posicaoInicialEsquerda = 3;
     Stage stage = (Stage) botaoProsseguir.getScene().getWindow();
     trocarTela(stage,"/view/menu.fxml");
   }// Fim do metodo iniciarMenu
@@ -158,6 +178,9 @@ public class TutorialController extends BaseController implements Initializable{
   *************************************************************** */
   @Override
   public void initialize(URL location, ResourceBundle resources){
-    aplicarAnimacaoBotao(botaoProsseguir, botaoVoltar); // Aplicando a animacao aos botoes
+    posicaoInicialDireita = 1;
+    posicaoInicialEsquerda = 3;
+    aplicarAnimacaoBotao(botaoProsseguir, botaoVoltar, botaoComColisao, botaoEstritaAlternancia, botaoPeterson, botaoVariavelDeTravamento); // Aplicando a animacao aos botoes
+    verificaSistemaSelecionado();
   }// Fim do metodo initialize
 }// Fim da classe TutorialController

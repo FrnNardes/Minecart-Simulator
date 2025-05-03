@@ -8,6 +8,7 @@
 *************************************************************** */
 package controller;
 
+import java.io.IOException;
 // Importando as bibliotecas necessarias
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,9 +16,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.Villager;
-import util.MovimentoController;
 
 public class SimulacaoController extends BaseController implements Initializable{
 
@@ -26,54 +29,15 @@ public class SimulacaoController extends BaseController implements Initializable
   @FXML
   private ImageView imagemVillagerDireita, imagemVillagerEsquerda; // Imagens dos villagers na simulacao
 
+  Image botaoVerde = new Image(getClass().getResourceAsStream("/assets/menuButtonGreen.png"));
+  Image botaoCinza = new Image(getClass().getResourceAsStream("/assets/menuButton.png"));
+
   @FXML
-  private ImageView botaoReset, botaoSair, setaDireitaCima, setaDireitaBaixo, setaEsquerdaCima, setaEsquerdaBaixo; // Instanciando imagens dos botoes e das setas dos botoes
+  private ImageView botaoReset, botaoSair, botaoVoltar, botaoComColisao, botaoVariavelDeTravamento, botaoEstritaAlternancia, botaoPeterson, setaDireitaCima, setaDireitaBaixo, setaEsquerdaCima, setaEsquerdaBaixo; // Instanciando imagens dos botoes e das setas dos botoes
 
   @FXML
   private Slider sliderDireita, sliderEsquerda; // Sliders que controlam a velocidade
   
-  /* ***************************************************************
-  * Animacao: timerVillagerDireita
-  * Funcao: Controla a animacao do movimento do Villager da direita
-  *************************************************************** 
-  AnimationTimer timerVillagerDireita = new AnimationTimer() {
-
-    /* ***************************************************************
-    * Metodo: handle
-    * Funcao: Metodo chamado a cada frame da animacao, executando tudo que esta contido nele, movmentando o Villager na direita
-    * Parametros: long now -> O parametro now de tipo long representando o tempo atual do sistema em nanossegundos
-    * Retorno: void
-    *************************************************************** 
-    @Override
-    public void handle(long now) {
-      Platform.runLater(() ->{
-        villagerDireita.setVelocidade(sliderDireita.getValue());
-        movimentoController.movimentarVillagers(villagerDireita);
-      });
-    }// Fim do metodo handle
-  };// Fim do timerVillagerDireita
-
-  /* ***************************************************************
-  * Animacao: timerVillagerEsquerda
-  * Funcao: Controla a animacao do movimento do Villager da esquerda
-  *************************************************************** 
-  AnimationTimer timerVillagerEsquerda = new AnimationTimer() {
-
-    /* ***************************************************************
-    * Metodo: handle
-    * Funcao: Metodo chamado a cada frame da animacao, executando tudo que esta contido nele, movmentando o Villager na esquerda
-    * Parametros: long now -> O parametro now de tipo long representando o tempo atual do sistema em nanossegundos
-    * Retorno: void
-    *************************************************************** 
-    @Override
-    public void handle(long now) {
-      Platform.runLater(() ->{
-        villagerEsquerda.setVelocidade(sliderEsquerda.getValue());
-        movimentoController.movimentarVillagers(villagerEsquerda);
-      });
-    }// Fim do metodo handle
-  };// Fim do timerVillagerEsquerda
-
   /* ***************************************************************
   * Metodo: botaoDireita
   * Funcao: Move o Villager da direita para a posicao superior ou inferior
@@ -151,6 +115,77 @@ public class SimulacaoController extends BaseController implements Initializable
     sliderEsquerda.setValue(2);
   }// Fim do metodo resetarPosicao
 
+  @FXML
+  public void selecionaSistemaColisao(MouseEvent event){
+    ImageView clicado = (ImageView) event.getSource();
+    String idClicado = clicado.getId();
+    
+    if(idClicado.equals("botaoComColisao")){
+      botaoComColisao.setImage(botaoVerde);
+      botaoVariavelDeTravamento.setImage(botaoCinza);
+      botaoEstritaAlternancia.setImage(botaoCinza);
+      botaoPeterson.setImage(botaoCinza);
+      TutorialController.sistemaColisao = 0;
+      resetarPosicao();
+    } else if(idClicado.equals("botaoVariavelDeTravamento")){
+      botaoComColisao.setImage(botaoCinza);
+      botaoVariavelDeTravamento.setImage(botaoVerde);
+      botaoEstritaAlternancia.setImage(botaoCinza);
+      botaoPeterson.setImage(botaoCinza);
+      TutorialController.sistemaColisao = 1;
+      resetarPosicao();
+    } else if(idClicado.equals("botaoEstritaAlternancia")){
+      botaoComColisao.setImage(botaoCinza);
+      botaoVariavelDeTravamento.setImage(botaoCinza);
+      botaoEstritaAlternancia.setImage(botaoVerde);
+      botaoPeterson.setImage(botaoCinza);
+      TutorialController.sistemaColisao = 2;
+      resetarPosicao();
+    } else {
+      botaoComColisao.setImage(botaoCinza);
+      botaoVariavelDeTravamento.setImage(botaoCinza);
+      botaoEstritaAlternancia.setImage(botaoCinza);
+      botaoPeterson.setImage(botaoVerde);
+      TutorialController.sistemaColisao = 3;
+      resetarPosicao();
+    }
+  }
+
+  public void verificaSistemaSelecionado(){
+    if(TutorialController.sistemaColisao == 0){
+      botaoComColisao.setImage(botaoVerde);
+      botaoVariavelDeTravamento.setImage(botaoCinza);
+      botaoEstritaAlternancia.setImage(botaoCinza);
+      botaoPeterson.setImage(botaoCinza);
+    } else if(TutorialController.sistemaColisao == 1){
+      botaoComColisao.setImage(botaoCinza);
+      botaoVariavelDeTravamento.setImage(botaoVerde);
+      botaoEstritaAlternancia.setImage(botaoCinza);
+      botaoPeterson.setImage(botaoCinza); 
+    } else if(TutorialController.sistemaColisao == 2){
+      botaoComColisao.setImage(botaoCinza);
+      botaoVariavelDeTravamento.setImage(botaoCinza);
+      botaoEstritaAlternancia.setImage(botaoVerde);
+      botaoPeterson.setImage(botaoCinza);
+    } else {
+      botaoComColisao.setImage(botaoCinza);
+      botaoVariavelDeTravamento.setImage(botaoCinza);
+      botaoEstritaAlternancia.setImage(botaoCinza);
+      botaoPeterson.setImage(botaoVerde);
+    }
+  }
+
+  @FXML
+  private void iniciarTutorial() throws IOException{
+    resetarPosicao();
+    villagerDireita.setPosicao(1);
+    villagerEsquerda.setPosicao(3);
+    villagerDireita.parar();
+    villagerEsquerda.parar();
+    Stage stage = (Stage) botaoSair.getScene().getWindow();
+    trocarTela(stage, "/view/tutorial.fxml");
+  }// Fim do metodo iniciarTutorial
+
   /* ***************************************************************
   * Metodo: initialize
   * Funcao: Inicializa os elementos da simulacao, definindo posicoes iniciais e iniciando animacoes
@@ -163,7 +198,8 @@ public class SimulacaoController extends BaseController implements Initializable
     sliderDireita.setValue(2); // Define a velocidade inicial do villager direito em 2
     sliderEsquerda.setValue(2); // Define a velocidade inicial do villager esquerdo em 2
     posicionarVillagers(TutorialController.posicaoInicialDireita, TutorialController.posicaoInicialEsquerda); // Posiciona os mobs nas posicoes indicadas na tela de tutorial
-    aplicarAnimacaoBotao(botaoReset, botaoSair); // Aplicando a animacao aos botoes
+    aplicarAnimacaoBotao(botaoReset, botaoSair, botaoComColisao, botaoEstritaAlternancia, botaoPeterson, botaoVariavelDeTravamento, botaoVoltar); // Aplicando a animacao aos botoes
+    verificaSistemaSelecionado(); // Verifica qual sistema foi selecionado na tela de tutorial
 
     if(TutorialController.posicaoInicialDireita == 2){ // Verifica a posicao que o villager começa e define a opacidade das setas de acordo
       setaDireitaCima.setOpacity(0.2);

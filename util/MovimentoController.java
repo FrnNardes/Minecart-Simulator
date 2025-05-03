@@ -12,6 +12,11 @@ import javafx.scene.image.ImageView;
 import model.Villager;
 
 public class MovimentoController {
+  private static int turnId1 = 0;
+  private static int turnId2 = 0;
+  private static volatile int outro1, outro2; // Para ZonaCritica1
+  private static volatile boolean[] interessado1 = {false, false}; // Para ZonaCritica1
+  private static volatile boolean[] interessado2 = {false, false}; // Para ZonaCritica2
   private static boolean zonaCritica1 = false;
   private static boolean zonaCritica2 = false;
   private static Villager villagerZonaCritica1 = null;
@@ -28,7 +33,7 @@ public class MovimentoController {
 
   /* ***************************************************************
   * Metodo: movimentarVillagers
-  * Funcao: Movimenta o Villager chamando a funcao adequada de acordo com sua posicao atual
+  * Funcao: Movimenta o Villager executando condições adequada de acordo com sua posicao atual
   * Parametros: villager -> Objeto Villager a ser movimentado
   * Retorno: void
   *************************************************************** */
@@ -246,11 +251,29 @@ public class MovimentoController {
 
   public boolean controleEntradaZona1(Villager villager){
     switch (villager.getTecnicaColisao()) {
-      case 1:
+      case 1: // Variavel de travamento
         if(zonaCritica1 && villagerZonaCritica1 != null && !(villagerZonaCritica1.equals(villager))){
           return true;
         }
         zonaCritica1 = true;
+        villagerZonaCritica1 = villager;
+        return false;
+
+      case 2: // Estrita Alternancia
+        if(turnId1 != villager.getTurnId() && villagerZonaCritica1 != null){
+          return true;
+        }
+        turnId1 = villager.getTurnId();
+        villagerZonaCritica1 = villager;
+        return false;
+      
+      case 3: // Solucao de Peterson
+        int id = villager.getTurnId();
+        interessado1[id] = true;
+        outro1 = 1 - id;
+        if (interessado1[outro1] && villagerZonaCritica1 != null && !(villagerZonaCritica1.equals(villager))) {
+          return true;
+        }
         villagerZonaCritica1 = villager;
         return false;
       default:
@@ -260,9 +283,19 @@ public class MovimentoController {
 
   public void controleSaidaZona1(Villager villager){
     switch (villager.getTecnicaColisao()) {
-      case 1:
+      case 1: // Variavel de travamento
         zonaCritica1 = false;
         villagerZonaCritica1 = null;
+      
+      case 2: // Estrita Alternancia
+        turnId1 = 1 - villager.getTurnId();
+        villagerZonaCritica1 = null;
+
+      case 3: // Solucao de Peterson
+        int id = villager.getTurnId();
+        interessado1[id] = false;
+        villagerZonaCritica1 = null;
+
       default:
         break;
     }
@@ -270,11 +303,29 @@ public class MovimentoController {
 
   public boolean controleEntradaZona2(Villager villager){
     switch (villager.getTecnicaColisao()) {
-      case 1:
+      case 1: // Variavel de travamento
         if(zonaCritica2 && villagerZonaCritica2 != null && !(villagerZonaCritica2.equals(villager))){
           return true;
         }
         zonaCritica2 = true;
+        villagerZonaCritica2 = villager;
+        return false;
+
+      case 2: // Estrita Alternancia
+        if(turnId2 != villager.getTurnId() && villagerZonaCritica2 != null){
+          return true;
+        }
+        turnId2 = villager.getTurnId();
+        villagerZonaCritica2 = villager;
+        return false;
+
+      case 3:
+        int id = villager.getTurnId();
+        interessado2[id] = true;
+        outro2 = 1 - id;
+        if (interessado2[outro2] && villagerZonaCritica2 != null && !(villagerZonaCritica2.equals(villager))) {
+          return true;
+        }
         villagerZonaCritica2 = villager;
         return false;
       default:
@@ -284,9 +335,19 @@ public class MovimentoController {
 
   public void controleSaidaZona2(Villager villager){
     switch (villager.getTecnicaColisao()) {
-      case 1:
+      case 1: // Variavel de travamento
         zonaCritica2 = false;
         villagerZonaCritica2 = null;
+
+      case 2: // Estrita Alternancia
+        turnId2 = 1 - villager.getTurnId();
+        villagerZonaCritica2 = null;
+      
+      case 3:
+        int id = villager.getTurnId();
+        interessado2[id] = false;
+        villagerZonaCritica2 = null;
+
       default:
         break;
     }
@@ -297,5 +358,7 @@ public class MovimentoController {
     zonaCritica2 = false;
     villagerZonaCritica1 = null;
     villagerZonaCritica2 = null;
+    turnId1 = 0;
+    turnId2 = 0;
   }
 }// Fim da classe MovimentoController
