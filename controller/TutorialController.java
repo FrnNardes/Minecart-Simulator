@@ -25,8 +25,8 @@ public class TutorialController extends BaseController implements Initializable{
   protected static int posicaoInicialEsquerda = 3; // Setando a posicao incial da esquerda em baixo 
   protected static int sistemaColisao = 0; // Setando o sistema de colisao inicial com colisao
 
-  Image botaoVerde = new Image(getClass().getResourceAsStream("/assets/menuButtonGreen.png"));
-  Image botaoCinza = new Image(getClass().getResourceAsStream("/assets/menuButton.png"));
+  Image botaoVerde = new Image(getClass().getResourceAsStream("/assets/menuButtonGreen.png")); // Pega a imagem do botao verde
+  Image botaoCinza = new Image(getClass().getResourceAsStream("/assets/menuButton.png")); // Pega a imagem do botao cinza
 
   @FXML
   private ImageView botaoProsseguir, botaoVoltar, botaoComColisao, botaoVariavelDeTravamento, botaoEstritaAlternancia, botaoPeterson; // Instanciando os botoes
@@ -89,6 +89,13 @@ public class TutorialController extends BaseController implements Initializable{
     }// Fim do if
   }// Fim do metodo botaoEsquerda
 
+  /* ***************************************************************
+  * Metodo: selecionaSistemaColisao
+  * Funcao: Verifica o sistema de colisao selecionado pelo usuario e
+            colore o botao selecionado em um tom de verde
+  * Parametros: event -> Acao do mouse
+  * Retorno:void
+  *************************************************************** */
   @FXML
   public void selecionaSistemaColisao(MouseEvent event){
     ImageView clicado = (ImageView) event.getSource();
@@ -121,12 +128,20 @@ public class TutorialController extends BaseController implements Initializable{
     }
   }
 
+  /* ***************************************************************
+  * Metodo: verificaSistemaSelecionado
+  * Funcao: Verifica o sistema de colisao atual selecinado e o colore
+  *         de acordo
+  * Parametros: nenhum
+  * Retorno:void
+  *************************************************************** */
   public void verificaSistemaSelecionado(){
     if(TutorialController.sistemaColisao == 0){
       botaoComColisao.setImage(botaoVerde);
       botaoVariavelDeTravamento.setImage(botaoCinza);
       botaoEstritaAlternancia.setImage(botaoCinza);
       botaoPeterson.setImage(botaoCinza);
+      
     } else if(TutorialController.sistemaColisao == 1){
       botaoComColisao.setImage(botaoCinza);
       botaoVariavelDeTravamento.setImage(botaoVerde);

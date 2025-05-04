@@ -102,7 +102,8 @@ public class SimulacaoController extends BaseController implements Initializable
 
   /* ***************************************************************
   * Metodo: resetarPosicao
-  * Funcao: Reseta a posicao dos villagers e trazem eles para a posicao incial
+  * Funcao: Para a thread dos villagers, reseta a sua posicao e trazem
+  *         eles para a posicao incial
   * Parametros: Nenhum
   * Retorno: void
   *************************************************************** */
@@ -111,10 +112,17 @@ public class SimulacaoController extends BaseController implements Initializable
     villagerDireita.parar();
     villagerEsquerda.parar();
     posicionarVillagers(villagerDireita.getPosicao(), villagerEsquerda.getPosicao());
-    sliderDireita.setValue(2);
-    sliderEsquerda.setValue(2);
+    sliderDireita.setValue(1);
+    sliderEsquerda.setValue(1);
   }// Fim do metodo resetarPosicao
 
+  /* ***************************************************************
+  * Metodo: selecionaSistemaColisao
+  * Funcao: Verifica o sistema de colisao selecionado pelo usuario e
+            colore o botao selecionado em um tom de verde
+  * Parametros: event -> Acao do mouse
+  * Retorno:void
+  *************************************************************** */
   @FXML
   public void selecionaSistemaColisao(MouseEvent event){
     ImageView clicado = (ImageView) event.getSource();
@@ -151,6 +159,13 @@ public class SimulacaoController extends BaseController implements Initializable
     }
   }
 
+  /* ***************************************************************
+  * Metodo: verificaSistemaSelecionado
+  * Funcao: Verifica o sistema de colisao atual selecinado e o colore
+  *         de acordo
+  * Parametros: nenhum
+  * Retorno:void
+  *************************************************************** */
   public void verificaSistemaSelecionado(){
     if(TutorialController.sistemaColisao == 0){
       botaoComColisao.setImage(botaoVerde);
@@ -175,6 +190,12 @@ public class SimulacaoController extends BaseController implements Initializable
     }
   }
 
+  /* ***************************************************************
+  * Metodo: iniciarTutorial
+  * Funcao: Troca a tela atual para a tela de tutorial
+  * Parametros: nenhum
+  * Retorno: void
+  *************************************************************** */
   @FXML
   private void iniciarTutorial() throws IOException{
     resetarPosicao();
@@ -195,8 +216,8 @@ public class SimulacaoController extends BaseController implements Initializable
   *************************************************************** */
   @Override
   public void initialize(URL location, ResourceBundle resources){
-    sliderDireita.setValue(2); // Define a velocidade inicial do villager direito em 2
-    sliderEsquerda.setValue(2); // Define a velocidade inicial do villager esquerdo em 2
+    sliderDireita.setValue(1); // Define a velocidade inicial do villager direito em 2
+    sliderEsquerda.setValue(1); // Define a velocidade inicial do villager esquerdo em 2
     posicionarVillagers(TutorialController.posicaoInicialDireita, TutorialController.posicaoInicialEsquerda); // Posiciona os mobs nas posicoes indicadas na tela de tutorial
     aplicarAnimacaoBotao(botaoReset, botaoSair, botaoComColisao, botaoEstritaAlternancia, botaoPeterson, botaoVariavelDeTravamento, botaoVoltar); // Aplicando a animacao aos botoes
     verificaSistemaSelecionado(); // Verifica qual sistema foi selecionado na tela de tutorial
