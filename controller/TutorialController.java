@@ -2,7 +2,7 @@
 * Autor............: Fernando Nardes Ferreira Neto
 * Matricula........: 202410403
 * Inicio...........: 14/03/2025
-* Ultima alteracao.: 20/03/2025
+* Ultima alteracao.: 05/04/2025
 * Nome.............: TutorialController.java
 * Funcao...........: Controlador da tela de tutorial, realizando o posicionamento inicial dos villagers, indicando o funcionamento de botoes, etc;
 *************************************************************** */
@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 public class TutorialController extends BaseController implements Initializable{
   protected static int posicaoInicialDireita = 1; // Setando a posicao incial da direita em baixo 
   protected static int posicaoInicialEsquerda = 3; // Setando a posicao incial da esquerda em baixo 
-  protected static int sistemaColisao = 0; // Setando o sistema de colisao inicial com colisao
+  protected static int sistemaColisao = 1; // Setando o sistema de colisao inicial com colisao
 
   Image botaoVerde = new Image(getClass().getResourceAsStream("/assets/menuButtonGreen.png")); // Pega a imagem do botao verde
   Image botaoCinza = new Image(getClass().getResourceAsStream("/assets/menuButton.png")); // Pega a imagem do botao cinza
@@ -196,6 +196,6 @@ public class TutorialController extends BaseController implements Initializable{
     posicaoInicialDireita = 1;
     posicaoInicialEsquerda = 3;
     aplicarAnimacaoBotao(botaoProsseguir, botaoVoltar, botaoComColisao, botaoEstritaAlternancia, botaoPeterson, botaoVariavelDeTravamento); // Aplicando a animacao aos botoes
-    verificaSistemaSelecionado();
+    verificaSistemaSelecionado(); // Pinta de verde o botao do sistema selecionado
   }// Fim do metodo initialize
 }// Fim da classe TutorialController

@@ -2,9 +2,10 @@
 * Autor............: Fernando Nardes Ferreira Neto
 * Matricula........: 202410403
 * Inicio...........: 14/03/2025
-* Ultima alteracao.: 20/03/2025
+* Ultima alteracao.: 05/04/2025
 * Nome.............: Villager.java
 * Funcao...........: Classe modelo do objeto Villager, no qual sera a representacao do trem na aplicacao
+*                    e a execucao da thread, realizacao do movimento e verificacao de colisao.
 *************************************************************** */
 package model;
 
@@ -16,16 +17,16 @@ public class Villager extends Thread{
   private ImageView villagerImagem; // Representa a imagem do villager na interface grafica
   private volatile double velocidade; // Velocidade padrao do villager
   private int posicao; // Posicao inicial do villager
-  private Slider slider;
-  private boolean running = true;
-  private static int tecnicaColisao;
-  private int id;
+  private Slider slider; // Slider de velocidade do villager
+  private volatile boolean running = true; // Condicao para o while do run
+  private static int tecnicaColisao; // Tecnica de colisao selecionada
+  private int id; // ID do objeto de acordo com o lado
 
   // Variaveis para o controle de colisao
-  private static int trava1 = 0;
-  private static int trava2 = 0;
-  private static int turn1 = 0;
-  private static int turn2 = 0;
+  private static volatile int trava1 = 0;
+  private static volatile int trava2 = 0;
+  private static volatile int turn1 = 0;
+  private static volatile int turn2 = 0;
   private static volatile boolean[] flag1 = {false, false};
   private static volatile boolean[] flag2 = {false, false};
   private boolean zonaCritica1 = false;
@@ -84,7 +85,7 @@ public class Villager extends Thread{
 
   /* ***************************************************************
     * Metodo: run
-    * Funcao: Metodo chamado a cada execução da thread, executando tudo que esta contido, movimentando o Villager
+    * Funcao: Metodo chamado a cada execucao da thread, executando tudo que esta contido, movimentando o Villager
     * Parametros: nenhum
     * Retorno: void
     *************************************************************** */
@@ -95,7 +96,7 @@ public class Villager extends Thread{
         this.mover();
       });// Fim do Platform.runLater
       try {
-        Thread.sleep(10); // Pausa de 10ms para evitar dominação de uma thread e diminuir a velocidade;
+        Thread.sleep(10); // Pausa de 10ms para evitar dominacao de uma thread e diminuir a velocidade;
       } catch (InterruptedException e) {
           e.printStackTrace();
       }
@@ -104,7 +105,7 @@ public class Villager extends Thread{
 
   /* ***************************************************************
     * Metodo: parar
-    * Funcao: Metodo que muda a condição do while da thread, terminando sua execução, e reseta o sistema de colisao.
+    * Funcao: Metodo que muda a condicao do while da thread, terminando sua execucao, e reseta o sistema de colisao.
     * Parametros: nenhum
     * Retorno: void
     *************************************************************** */
@@ -113,15 +114,23 @@ public class Villager extends Thread{
     running = false;
   }
 
+  /* ***************************************************************
+  * Metodo: mover
+  * Funcao: Metodo que realiza as comparacoes da posicao do objeto e faz com que ele se mova
+  * Parametros: nenhum
+  * Retorno: void
+  *************************************************************** */
   public void mover(){
     Villager villager = this;
     ImageView image = villager.getVillagerImage();
     villager.setVelocidadeSlider();
+
     switch (villager.getPosicao()) { //Muda a movimentacao de acordo com a posicao inicial setada no atributo posicao do villager
       case 1: // movimentarVillagerDireitaBaixo
       if(image.getLayoutY() > 560){ // Verifica a posicao do villager ate o limite da curva
         image.setLayoutY(image.getLayoutY() - villager.getVelocidade()); // Movimenta o villager no eixo Y
       } else if(image.getLayoutY() <= 560 && image.getLayoutY() > 540){// Verifica a posicao do villager do inicio ate o fim da curva
+        // INICIO ZONA CRITICA 1
         if(controleEntradaZona1() && !(zonaCritica1)){
           break;
         }
@@ -136,11 +145,13 @@ public class Villager extends Thread{
         image.setLayoutX(image.getLayoutX() + villager.getVelocidade());
         image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
         image.setRotate(60);
+        // FIM ZONA CRITICA 1
       } else if(image.getLayoutY() <= 390 && image.getLayoutY() > 260){
         controleSaidaZona1();
         image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
         image.setRotate(0);
         image.setLayoutX(508);
+        // INICIO ZONA CRITICA 2
       } else if(image.getLayoutY() <= 260 && image.getLayoutY() > 240){
         if(controleEntradaZona2() && !(zonaCritica2)){
           break;
@@ -156,6 +167,7 @@ public class Villager extends Thread{
         image.setLayoutX(image.getLayoutX() + villager.getVelocidade());
         image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
         image.setRotate(60);
+        // FIM ZONA CRITICA 2
       } else if(image.getLayoutY() <= 90){
         controleSaidaZona2();
         image.setLayoutY(image.getLayoutY() - villager.getVelocidade());
@@ -325,6 +337,12 @@ public class Villager extends Thread{
     }// Fim do switch
   }// Fim do metodo mover
 
+  /* ***************************************************************
+  * Metodo: controleEntradaZona1
+  * Funcao: Metodo que controla a zona1, verificando a colisao de acordo com a tecnica selecionada
+  * Parametros: nenhum
+  * Retorno: boolean
+  *************************************************************** */
   public boolean controleEntradaZona1(){
     switch(tecnicaColisao){
       case 1: // Variavel de travamento
@@ -334,6 +352,7 @@ public class Villager extends Thread{
           return false;
         }
         return true;
+
       case 2:
         if(turn1 != this.getTurnId()){
           zonaCritica1 = true;
@@ -354,6 +373,12 @@ public class Villager extends Thread{
     }
   }
 
+  /* ***************************************************************
+  * Metodo: controleSaidaZona1
+  * Funcao: Metodo que libera a zona1, permitindo que outro objeto a acesse
+  * Parametros: nenhum
+  * Retorno: void
+  *************************************************************** */
   public void controleSaidaZona1(){
     switch(tecnicaColisao){
       case 1: // Variavel de travamento
@@ -371,6 +396,12 @@ public class Villager extends Thread{
     }
   }
 
+  /* ***************************************************************
+  * Metodo: controleEntradaZona2
+  * Funcao: Metodo que controla a zona2, verificando a colisao de acordo com a tecnica selecionada
+  * Parametros: nenhum
+  * Retorno: boolean
+  *************************************************************** */
   public boolean controleEntradaZona2(){
     switch(tecnicaColisao){
       case 1: // Variavel de travamento
@@ -400,6 +431,12 @@ public class Villager extends Thread{
     }
   }
 
+  /* ***************************************************************
+  * Metodo: controleSaidaZona2
+  * Funcao: Metodo que libera a zona2, permitindo que outro objeto a acesse
+  * Parametros: nenhum
+  * Retorno: void
+  *************************************************************** */
   public void controleSaidaZona2(){
     switch(tecnicaColisao){
       case 1: // Variavel de travamento
@@ -419,6 +456,12 @@ public class Villager extends Thread{
     }
   }
 
+  /* ***************************************************************
+  * Metodo: resetarColisao
+  * Funcao: Reseta todos os parametros utilizados nas tecnicas de colisao
+  * Parametros: nenhum
+  * Retorno: nenhum
+  *************************************************************** */
   public void resetarColisao(){
     trava1 = 0;
     trava2 = 0;
