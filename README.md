@@ -6,7 +6,6 @@ O **Minecart Simulator** é uma simulação do problema dos trens em cruzamentos
 ## 🛠️ Tecnologias Utilizadas
 - **Java 8**
 - **JavaFX e CSS**
-- **Threads e Concurrency** (para simulação realista de múltiplos trens)
 
 ## 🚀 Como Executar
 1. **Clone o repositório:**
