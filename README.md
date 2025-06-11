@@ -1,7 +1,7 @@
 #  Minecart Simulator
 
 ## 📌 Sobre o Projeto
-O **Minecart Simulator** é um projeto desenvolvido em Java que tem como objetivo simular o funcionamento de um sistema ferroviário e o gerenciamento do fluxo de trens, utilizando os conceitos de Programação Concorrente.
+O **Minecart Simulator** é uma simulação do problema dos trens em cruzamentos ferroviários, abordando o controle de acesso exclusivo a seções críticas. O projeto demonstra soluções para evitar colisões, deadlocks e garantir a fluidez do tráfego de múltiplos trens concorrentes.
 
 ## 🛠️ Tecnologias Utilizadas
 - **Java 8**
